@@ -246,10 +246,10 @@ type HeroSlide = {
 // ============================================================================
 
 const heroPromos: HeroPromo[] = [
-  { id: 1, label: '-35% on Fish Boxes', icon: '🐟' },
-  { id: 2, label: 'New Seasonal Catch', icon: '🧊' },
-  { id: 3, label: 'Save on Smoked Fish', icon: '🔥' },
-  { id: 4, label: 'Free Chilled Delivery', icon: '🚚' },
+  { id: 1, label: '-35% on Fish Boxes', icon: 'http://www.downthecove.com/wp-content/uploads/2015/08/HOME-CIRCLE-FISHING-nb-e1589709232864.png' },
+  { id: 2, label: 'New Seasonal Catch', icon: 'http://www.downthecove.com/wp-content/uploads/2020/05/home-circle-smoking-nb-e1589709453980.png' },
+  { id: 3, label: 'Save on Smoked Fish', icon: 'http://www.downthecove.com/wp-content/uploads/2020/05/HOME-CIRLCE-HOMEDECOR-nb-e1589709875537.png' },
+  { id: 4, label: 'Free Chilled Delivery', icon: 'http://www.downthecove.com/wp-content/uploads/2020/05/HOME-CIRLCE-CHANDLERY-nb-e1589709814811.png' },
 ];
 
 const heroSlides: HeroSlide[] = [
@@ -677,11 +677,11 @@ const categories: Category[] = [
 
 const HeroSection: React.FC = () => {
   const benefits = [
-    { id: 1, label: 'Fresh Catch Every Day', icon: '⚓' },
-    { id: 2, label: 'Safe Payment With Any Card', icon: '💳' },
-    { id: 3, label: '24/7 Support', icon: '📞' },
-    { id: 4, label: 'Free Delivery From £30', icon: '🚚' },
-    { id: 5, label: 'Chilled Packaging', icon: '❄️' },
+    { id: 1, label: 'Fresh Catch Every Day', icon: <Icons.Fish className="w-5 h-5 text-[#1B6CA8]" /> },
+    { id: 2, label: 'Safe Payment With Any Card', icon: <Icons.CurrencyPound className="w-5 h-5 text-[#1B6CA8]" /> },
+    { id: 3, label: '24/7 Support', icon: <Icons.Phone className="w-5 h-5 text-[#1B6CA8]" /> },
+    { id: 4, label: 'Free Delivery From £30', icon: <Icons.Truck className="w-5 h-5 text-[#1B6CA8]" /> },
+    { id: 5, label: 'Chilled Packaging', icon: <Icons.Package className="w-5 h-5 text-[#1B6CA8]" /> },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -704,8 +704,12 @@ const HeroSection: React.FC = () => {
             key={promo.id}
             className="flex flex-col items-center text-center min-w-[140px]"
           >
-            <div className="h-20 w-20 rounded-full bg-slate-100 flex items-center justify-center text-2xl">
-              <span aria-hidden="true">{promo.icon}</span>
+            <div className="h-20 w-20 rounded-full bg-slate-100 flex items-center justify-center">
+              <img
+                src={promo.icon}
+                alt={promo.label}
+                className="h-16 w-16 object-contain"
+              />
             </div>
             <p className="mt-2 text-sm font-semibold text-[#071827]">
               {promo.label}
@@ -827,7 +831,7 @@ const HeroSection: React.FC = () => {
           {[...benefits, ...benefits].map((benefit, idx) => (
             <div key={`${benefit.id}-${idx}`} className="flex items-center gap-2 flex-shrink-0">
               <div className="h-10 w-10 rounded-full bg-[#E0F0FF] flex items-center justify-center text-lg text-[#071827]">
-                <span aria-hidden="true">{benefit.icon}</span>
+                {benefit.icon}
               </div>
               <span className="text-sm font-semibold text-[#071827]">
                 {benefit.label}
@@ -844,8 +848,11 @@ const StorySection: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section aria-labelledby="story-heading" className="mt-16 -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-10 bg-white py-8 md:py-10">
-      <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 xl:px-10 mb-0">
+    <section
+      aria-labelledby="story-heading"
+      className="mt-16 bg-white py-10 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
+    >
+      <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-8 lg:px-10 xl:px-12 mb-0">
         <h2
           id="story-heading"
           className="text-xl md:text-2xl font-semibold text-[#1B6CA8] mb-3"
